@@ -1,3 +1,18 @@
+// 8. Add eventListener to the buttons that call your playRound function
+// 8.1 declare buttons
+const btn=document.getElementById("btn");
+// 8.2. Check if btns exist
+// if (btns) {
+// 	console.log ("exist");
+// } else {
+// 	console.log("error");
+// }
+// 8.3. add event listenr
+btn.addEventListener("click", function(){alert("clicked!")});
+
+// function myFunction() {
+// 	console.log("clicked");
+// }
 // 5. add score
 // 	5.1 declare playerPoint and computerPoint in global scope and set them 0
 let computerPoint=0;
@@ -102,3 +117,7 @@ game();
 		}
 
 // 7. reset the game
+
+
+
+
