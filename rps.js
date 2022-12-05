@@ -21,75 +21,81 @@ function computerPlay () {
 // console.log (computerSelection);
 
 // 2. declare playerPlay
+// 2.1 grab three buttons
 let btn = document.getElementsByClassName("buttons");
-console.log (btn);
-// loop through the button array and add click eventListener
+// 2.1. check if the buttons are grabbed correctly and see what kind of object they are
+// console.log (btn);
+// 2.2 loop through the button array and add click eventListener
 for (i=0; i<btn.length; i++)
 {
 	// clickFunction; //-- 1. doesn't work --//
 	btn[i].addEventListener("click", clickFunction);//-- 2. WORKS --//
 }
-// declare clickFunction
+// 2.3 declare clickFunction
 function clickFunction(obj) {
 	// use pointerEvent to find out where to find the innerText(what's written on each button) of each button
 	// document.addEventListener('click', (e) => {console.log(e)}); //-- pointerEvent
 	let playerSelection = obj.target.innerHTML;
-	console.log (playerSelection);
+	console.log ("Player: "+playerSelection);
+	// call function computerPlay after player select her pick
+	let computerSelection = computerPlay();
+	console.log("Computer: "+computerSelection);
+	playRound (computerSelection, playerSelection);
+// 4. iterate playRound until one player reaches 5 points
+// 4.1 if computerPlay reaches 5 points
+	if (computerPoint ==5 && playerPoint ==5) {
+		console.log ("Tie!!");
+// 4.3 reset game
+		
+	} else if (playerPoint == 5) {
+		console.log ("Player wins!");
+	} else if (computerPoint == 5) {
+// 4.2 show computerPlay wins
+		console.log ("Computer wins!");
+	}
 }
-let computerSelection = computerPlay();
-console.log (computerSelection);
-// // playerPlay ();
-// let playerSelection = playerPlay ();
-// console.log (playerSelection);
 
 // // 3. Play a round
-// function playRound (computerSelection, playerSelection) {
-// 	// 3.1 Tie situation
-// 	if (computerSelection === playerSelection) {
-// 		// 5.2 add one point to both parties when tie
-// 		playerPoint=playerPoint+1;
-// 		computerPoint=computerPoint+1;
-// 		console.log ("Player: "+playerPoint);
-// 		console.log ("Computer: "+computerPoint);	
-// 		// 3.1.1 alert ("Tie!");
-// 		return (`Both picked `+computerSelection+`. It's a tie!`);	
-// 	} 
-// // 	3.2 computer win
-// 		else if (computerSelection=="Rock" && playerSelection=="Scissors" || 
-// 						 computerSelection=="Paper" && playerSelection=="Rock" || 
-// 						 computerSelection=="Scissors" && playerSelection=="Paper" ||
-// 						computerSelection==null){
-// 	// 5.3 add one point to computerPoint
-// 		computerPoint=computerPoint+1;
-// 		console.log ("Player: "+playerPoint);
-// 		console.log ("Computer: "+computerPoint);
-// 	// 3.2.1 alert ("You Lose! " + computerSelection + " beats " + playerSelection);
-// 		return ("You Lose! " + computerSelection + " beats " + playerSelection);
-// 	} 
-// // 	3.3 player win
-// 	else {	
-// 	// 5.4 add one point to playerPoint
-// 		playerPoint = playerPoint+1;
-// 		console.log ("Player: "+playerPoint);
-// 		console.log ("Computer: "+computerPoint);
-// 	// 3.3.1 alert ("Congratulations! You Win!");
-// 		return ("Congratulations! You Win!");	
-// 	}
-// }
+function playRound (computerSelection, playerSelection) {
+	// 3.1 Tie situation
+	if (computerSelection === playerSelection) {
+		// 5.2 add one point to both parties when tie
+		playerPoint=playerPoint+1;
+		computerPoint=computerPoint+1;
+		// console.log ("Player: "+playerPoint+" Computer: "+computerPoint);
+		// console.log ("Computer: "+computerPoint);	
+		// 3.1.1 alert ("Tie!");
+		console.log (`It's a tie!`);	
+		console.log ("Player: "+playerPoint+" vs Computer: "+computerPoint);
+	} 
+// 	3.2 computer win
+		else if (computerSelection=="Rock" && playerSelection=="Scissors" || 
+						 computerSelection=="Paper" && playerSelection=="Rock" || 
+						 computerSelection=="Scissors" && playerSelection=="Paper" ||
+						computerSelection==null){
+	// 5.3 add one point to computerPoint
+		computerPoint=computerPoint+1;
+		// console.log ("Player: "+playerPoint);
+		// console.log ("Computer: "+computerPoint);
+	// 3.2.1 show computer won in written form  & points
+		console.log (computerSelection + " beats " + playerSelection);
+		console.log ("Player: "+playerPoint+" vs Computer: "+computerPoint);
+	} 
+// 	3.3 player win
+	else {	
+	// 5.4 add one point to playerPoint
+		playerPoint = playerPoint+1;
+		// console.log ("Player: "+playerPoint);
+		// console.log ("Computer: "+computerPoint);
+	// 3.3.1 alert ("Congratulations! You Win!");
+		console.log (playerSelection + " beats " + computerSelection);
+		console.log ("Player: "+playerPoint+" vs Computer: "+computerPoint);
+	}
+}
 
-// // 4. Play 5 times in a row
-// function game (){
-// 	for (i=0; i<5; i++) {
-// 		let playerSelection = playerPlay ();
-// 		console.log(playerSelection);
-// 		let computerSelection = computerPlay();
-// 		console.log(computerSelection);
-// 		// playRound (computerSelection, playerSelection);
-// 		console.log(playRound (computerSelection, playerSelection));
-// 	} 
-// };
 
-// game();
+
+
 
 // // 6. find the winner	
 // 	if (computerPoint > playerPoint) {
