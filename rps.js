@@ -100,7 +100,4 @@ function playRound (computerSelection, playerSelection) {
 
 // 5. Add a div for displaying results and change all of your console.logs into DOM methods.
 // 5.1 add a div in html and declare it in js
-const div = document.getElementById("div");
-
-// 5.2 change all of console.log into DOM methods
-// div.innerHTML="Player: ";
+// const div = document.getElementById("div");
