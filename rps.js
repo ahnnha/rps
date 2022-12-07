@@ -14,11 +14,6 @@ function computerPlay () {
 	let randomPick = options[randomNumber];
 	return randomPick;
 }
-// computerPlay ();
-// console.log(computerPlay());
-	//  1.4 store randomPick as computerSelection	 in global scope
-// let computerSelection = computerPlay();
-// console.log (computerSelection);
 
 // 2. declare playerPlay
 // 2.1 grab three buttons
@@ -36,22 +31,32 @@ function clickFunction(obj) {
 	// use pointerEvent to find out where to find the innerText(what's written on each button) of each button
 	// document.addEventListener('click', (e) => {console.log(e)}); //-- pointerEvent
 	let playerSelection = obj.target.innerHTML;
-	console.log ("Player: "+playerSelection);
+// 5.2 change all of console.log into DOM method
+	document.getElementById("div1").innerHTML="Player: "+playerSelection;
 	// call function computerPlay after player select her pick
 	let computerSelection = computerPlay();
-	console.log("Computer: "+computerSelection);
+	document.getElementById("div2").innerHTML="Computer: "+computerSelection;
 	playRound (computerSelection, playerSelection);
 // 4. iterate playRound until one player reaches 5 points
 // 4.1 if computerPlay reaches 5 points
 	if (computerPoint ==5 && playerPoint ==5) {
-		console.log ("Tie!!");
-// 4.3 reset game
-		
+		// 4.2 console.log who won and gameover
+		document.getElementById("div4").innerHTML="Tie!! GAMEOVER";
+		// 4.3 reset game
+		computerPoint = 0;
+		playerPoint = 0;
 	} else if (playerPoint == 5) {
-		console.log ("Player wins!");
+		// 4.2 console.log who won and gameover
+		document.getElementById("div4").innerHTML= "Player wins! GAMEOVER";
+		// 4.3 reset game
+		computerPoint = 0;
+		playerPoint = 0;
 	} else if (computerPoint == 5) {
-// 4.2 show computerPlay wins
-		console.log ("Computer wins!");
+		// 4.2 console.log who won and gameover
+		document.getElementById("div4").innerHTML="Computer wins! GAMEOVER";
+		// 4.3 reset game
+		computerPoint = 0;
+		playerPoint = 0;
 	}
 }
 
@@ -65,8 +70,8 @@ function playRound (computerSelection, playerSelection) {
 		// console.log ("Player: "+playerPoint+" Computer: "+computerPoint);
 		// console.log ("Computer: "+computerPoint);	
 		// 3.1.1 alert ("Tie!");
-		console.log (`It's a tie!`);	
-		console.log ("Player: "+playerPoint+" vs Computer: "+computerPoint);
+		document.getElementById("div3").innerHTML="It's a tie!";	
+		document.getElementById("div4").innerHTML="Player: "+playerPoint+" vs Computer: "+computerPoint;
 	} 
 // 	3.2 computer win
 		else if (computerSelection=="Rock" && playerSelection=="Scissors" || 
@@ -78,8 +83,8 @@ function playRound (computerSelection, playerSelection) {
 		// console.log ("Player: "+playerPoint);
 		// console.log ("Computer: "+computerPoint);
 	// 3.2.1 show computer won in written form  & points
-		console.log (computerSelection + " beats " + playerSelection);
-		console.log ("Player: "+playerPoint+" vs Computer: "+computerPoint);
+	document.getElementById("div3").innerHTML=computerSelection + " beats " + playerSelection;
+	document.getElementById("div4").innerHTML="Player: "+playerPoint+" vs Computer: "+computerPoint;
 	} 
 // 	3.3 player win
 	else {	
@@ -88,22 +93,14 @@ function playRound (computerSelection, playerSelection) {
 		// console.log ("Player: "+playerPoint);
 		// console.log ("Computer: "+computerPoint);
 	// 3.3.1 alert ("Congratulations! You Win!");
-		console.log (playerSelection + " beats " + computerSelection);
-		console.log ("Player: "+playerPoint+" vs Computer: "+computerPoint);
+		document.getElementById("div3").innerHTML=playerSelection + " beats " + computerSelection;
+		document.getElementById("div4").innerHTML="Player: "+playerPoint+" vs Computer: "+computerPoint;
 	}
 }
 
+// 5. Add a div for displaying results and change all of your console.logs into DOM methods.
+// 5.1 add a div in html and declare it in js
+const div = document.getElementById("div");
 
-
-
-
-// // 6. find the winner	
-// 	if (computerPoint > playerPoint) {
-// 		console.log ("Winner: Computer");
-// 	} else if (playerPoint > computerPoint) {
-// 			console.log ("Winner: Player");
-// 		} else {
-// 			console.log ("You Are All Winners!");
-// 		}
-
-// // 7. reset the game
+// 5.2 change all of console.log into DOM methods
+// div.innerHTML="Player: ";
