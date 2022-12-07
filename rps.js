@@ -100,4 +100,8 @@ function playRound (computerSelection, playerSelection) {
 
 // 5. Add a div for displaying results and change all of your console.logs into DOM methods.
 // 5.1 add a div in html and declare it in js
+<<<<<<< HEAD
 const div = document.getElementById("div");
+=======
+// const div = document.getElementById("div");
+>>>>>>> rps-ui
